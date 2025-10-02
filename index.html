@@ -1,58 +1,235 @@
 <!DOCTYPE html>
 <html lang="nb">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>VG2 Norsk • Elevutstilling</title>
-<meta name="description" content="Samling av elevarbeider i norsk: epoker, tekster og fordypning."/>
-<style>
-:root{
---bg:#0b0f14; --panel:#111827; --muted:#9aa4b2; --text:#e5e7eb; --accent:#60a5fa; --chip:#1f2937; --card:#0f172a; --ok:#34d399; --warn:#fbbf24;
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:linear-gradient(180deg,#0b0f14,#0b1220 30%,#0b0f14);color:var(--text);}
-header{position:sticky;top:0;background:rgba(11,15,20,.8);backdrop-filter:blur(10px);border-bottom:1px solid #111827;z-index:20}
-.wrap{max-width:1100px;margin:0 auto;padding:1rem}
-.row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
-h1{font-size:clamp(1.3rem,1.3rem+1.2vw,2rem);margin:.2rem 0}
-.search{flex:1;display:flex;gap:.5rem}
-input,select{background:#0b1220;border:1px solid #1f2a3a;color:var(--text);border-radius:.6rem;padding:.7rem .9rem;width:100%}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1rem}
-.card{background:linear-gradient(180deg,#0c1322,#0b1018);border:1px solid #1f2937;border-radius:1rem;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.25)}
-.card .thumb{aspect-ratio:16/9;background:#0b0f14 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 112"><rect width="200" height="112" fill="%230b0f14"/><text x="50%" y="50%" fill="%239aa4b2" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle">Forhåndsvisning</text></svg>') center/contain no-repeat}
-.card .body{padding:1rem}
-.title{font-weight:700;line-height:1.2;margin:0 0 .3rem}
-.meta{display:flex;gap:.5rem;flex-wrap:wrap;margin:.4rem 0 .6rem}
-.chip{font-size:.75rem;padding:.25rem .5rem;border-radius:999px;background:var(--chip);border:1px solid #263244;color:#cbd5e1}
-.desc{color:var(--muted);font-size:.95rem;min-height:2.6em}
-.footer{display:flex;justify-content:space-between;align-items:center;margin-top:.8rem}
-.btn{appearance:none;border:1px solid #2b3a52;background:transparent;color:var(--accent);padding:.5rem .7rem;border-radius:.6rem;text-decoration:none;font-weight:600}
-.btn:hover{border-color:#3b82f6;background:rgba(96,165,250,.08)}
-.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem}
-.tag{cursor:pointer}
-.tag.active{outline:2px solid var(--accent)}
-.legend{font-size:.85rem;color:var(--muted)}
-.empty{opacity:.8;text-align:center;padding:2rem}
-footer{border-top:1px solid #1f2937;margin-top:2rem;padding:1rem 0}
-.timeline{display:flex;gap:.5rem;overflow:auto;padding:.5rem 0}
-.tick{white-space:nowrap;background:#0b1220;border:1px solid #1f2937;color:#cbd5e1;padding:.4rem .6rem;border-radius:.5rem;cursor:pointer}
-.tick.active{background:#15223a;color:#fff;border-color:#26416b}
-.note{background:#0b1220;border:1px dashed #2b3952;border-radius:.8rem;padding:1rem;margin-top:1rem}
-a.inline{color:var(--accent)}
-.footnote{font-size:.8rem;color:var(--muted);margin-top:.5rem;text-align:center}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VG2 Norsk • Elevutstilling</title>
+  <meta name="description" content="Samling av elevarbeider i norsk: epoker, tekster og fordypning."/>
+  <style>
+    :root{
+      --bg:#0b0f14; --panel:#111827; --muted:#9aa4b2; --text:#e5e7eb; --accent:#60a5fa; --chip:#1f2937; --card:#0f172a; --ok:#34d399; --warn:#fbbf24;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:linear-gradient(180deg,#0b0f14,#0b1220 30%,#0b0f14);color:var(--text);}
+    header{position:sticky;top:0;background:rgba(11,15,20,.8);backdrop-filter:blur(10px);border-bottom:1px solid #111827;z-index:20}
+    .wrap{max-width:1100px;margin:0 auto;padding:1rem}
+    .row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+    h1{font-size:clamp(1.3rem,1.3rem+1.2vw,2rem);margin:.2rem 0}
+    .search{flex:1;display:flex;gap:.5rem}
+    input,select{background:#0b1220;border:1px solid #1f2a3a;color:var(--text);border-radius:.6rem;padding:.7rem .9rem;width:100%}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1rem}
+    .card{background:linear-gradient(180deg,#0c1322,#0b1018);border:1px solid #1f2937;border-radius:1rem;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+    .card .thumb{aspect-ratio:16/9;background:#0b0f14 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 112"><rect width="200" height="112" fill="%230b0f14"/><text x="50%" y="50%" fill="%239aa4b2" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle">Forhåndsvisning</text></svg>') center/contain no-repeat}
+    .card .body{padding:1rem}
+    .title{font-weight:700;line-height:1.2;margin:0 0 .3rem}
+    .meta{display:flex;gap:.5rem;flex-wrap:wrap;margin:.4rem 0 .6rem}
+    .chip{font-size:.75rem;padding:.25rem .5rem;border-radius:999px;background:var(--chip);border:1px solid #263244;color:#cbd5e1}
+    .desc{color:var(--muted);font-size:.95rem;min-height:2.6em}
+    .footer{display:flex;justify-content:space-between;align-items:center;margin-top:.8rem}
+    .btn{appearance:none;border:1px solid #2b3a52;background:transparent;color:var(--accent);padding:.5rem .7rem;border-radius:.6rem;text-decoration:none;font-weight:600}
+    .btn:hover{border-color:#3b82f6;background:rgba(96,165,250,.08)}
+    .filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem}
+    .tag{cursor:pointer}
+    .tag.active{outline:2px solid var(--accent)}
+    .legend{font-size:.85rem;color:var(--muted)}
+    .empty{opacity:.8;text-align:center;padding:2rem}
+    footer{border-top:1px solid #1f2937;margin-top:2rem;padding:1rem 0}
+    .timeline{display:flex;gap:.5rem;overflow:auto;padding:.5rem 0}
+    .tick{white-space:nowrap;background:#0b1220;border:1px solid #1f2937;color:#cbd5e1;padding:.4rem .6rem;border-radius:.5rem;cursor:pointer}
+    .tick.active{background:#15223a;color:#fff;border-color:#26416b}
+    .note{background:#0b1220;border:1px dashed #2b3952;border-radius:.8rem;padding:1rem;margin-top:1rem}
+    a.inline{color:var(--accent)}
+    .footnote{font-size:.8rem;color:var(--muted);margin-top:.5rem;text-align:center}
+  </style>
 </head>
 <body>
-<header>
-<div class="wrap">
-<div class="row">
-<h1>VG2 Norsk • Elevutstilling</h1>
-<div class="search">
-<input id="q" placeholder="Søk i titler, beskrivelser, forfattere…" aria-label="Søk" />
-<select id="epoch">
-<option value="">Alle epoker</option>
-</select>
-<select id="format">
-<option value="">Alle formater</option>
-</select>
+  <header>
+    <div class="wrap">
+      <div class="row">
+        <h1>VG2 Norsk • Elevutstilling</h1>
+        <div class="search">
+          <input id="q" placeholder="Søk i titler, beskrivelser, forfattere…" aria-label="Søk" />
+          <select id="epoch">
+            <option value="">Alle epoker</option>
+          </select>
+          <select id="format">
+            <option value="">Alle formater</option>
+          </select>
+        </div>
+      </div>
+      <div class="filters">
+        <span class="legend">Hurtigfiltre:</span>
+        <button class="chip tag" data-tag="analyse">Analyse</button>
+        <button class="chip tag" data-tag="kreativ">Kreativ</button>
+        <button class="chip tag" data-tag="muntlig">Muntlig</button>
+        <button class="chip tag" data-tag="fordypning">Fordypning</button>
+        <button class="chip tag" data-tag="AI-refleksjon">AI-refleksjon</button>
+      </div>
+      <div class="timeline" id="timeline" aria-label="Litterær tidslinje"></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="count" class="legend"></div>
+    <section id="cards" class="grid" aria-live="polite"></section>
+    <div id="empty" class="empty" hidden>Ingen treff. Prøv å fjerne noen filtre eller søk på nytt.</div>
+
+    <div class="note">
+      <strong>Hvordan legge til nytt arbeid?</strong>
+      <ol>
+        <li>Åpne <em>data</em>-delen nederst i denne fila.</li>
+        <li>Kopier en post og fyll inn feltene (tittel, elev/forfatter, epoke, nøkkelord, format, lenke osv.).</li>
+        <li>Last opp eventuelle filer til f.eks. OneDrive/Google Drive/YouTube/Vimeo og lim inn delingslenke.</li>
+        <li>Commit/publiser siden (GitHub Pages/Netlify/Skoleserver).</li>
+      </ol>
+      <p class="legend">Tips: Bruk initialer eller elevnummer hvis nettstedet skal være offentlig. Husk samtykke til publisering.</p>
+    </div>
+
+    <footer class="wrap">
+      <p class="legend">Laget for VG2 norsk. Struktur: epoker • tekster • sjangrer • kompetanse. Kildekode: én HTML-fil.</p>
+      <p class="footnote">Alle elevarbeider på denne siden er publisert med samtykke og merket med initialer. Verkene er lisensiert under CC BY-NC.</p>
+    </footer>
+  </main>
+
+  <script>
+    // ---- Data: legg til/endre poster her ------------------------------------------------------
+    const WORKS = [
+      {
+        title: "Et dukkehjem – moderne lesning",
+        author: "Elev AB",
+        epoch: "Realismen (ca. 1870–1890)",
+        year: 2025,
+        format: "Podkast",
+        tags: ["analyse","muntlig"],
+        description: "Samtale om kjønn, økonomi og makt i dag – med sitater fra stykket.",
+        link: "https://example.com/podkast",
+        cover: "",
+      },
+      {
+        title: "Norrøn myte som grafisk novelle",
+        author: "Elev CD",
+        epoch: "Norrøn tid (ca. 800–1350)",
+        year: 2025,
+        format: "Tegneserie",
+        tags: ["kreativ"],
+        description: "Gjenfortelling av Balder-myten i moderne setting. Refleksjon om virkemidler.",
+        link: "https://example.com/tegneserie.pdf",
+        cover: "",
+      },
+      {
+        title: "Språkhistorie: 1907–2012 i 5 minutter",
+        author: "Elev EF",
+        epoch: "Språkhistorie",
+        year: 2025,
+        format: "Video",
+        tags: ["muntlig","fordypning"],
+        description: "Kort forklaring av rettskrivingsreformer og holdningsendringer.",
+        link: "https://example.com/video",
+        cover: "",
+      },
+      {
+        title: "Maskin vs. menneske – dikt i Hofmos ånd",
+        author: "Elev GH",
+        epoch: "Etterkrigslitteratur (1945–)",
+        year: 2025,
+        format: "Tekst",
+        tags: ["kreativ","AI-refleksjon"],
+        description: "Eget dikt, AI-forsøk og refleksjon over stemme, bilder og etikk.",
+        link: "https://example.com/tekst",
+        cover: "",
+      },
+    ];
+
+    // ---- Konfigurasjon ------------------------------------------------------------------------
+    const EPOCHS = [
+      "Norrøn tid (ca. 800–1350)",
+      "Renessanse og barokk (ca. 1500–1700)",
+      "Opplysningstid (ca. 1700–1800)",
+      "Romantikk (ca. 1800–1850)",
+      "Nasjonalromantikk og poetisk realisme (ca. 1850–1870)",
+      "Realismen (ca. 1870–1890)",
+      "Nyromantikk og modernisme (ca. 1890–1945)",
+      "Etterkrigslitteratur (1945–)",
+      "Postmodernisme og samtidslitteratur",
+      "Språkhistorie"
+    ];
+
+    const FORMATS = ["Analyse","Essay","Tekst","Podkast","Video","Tegneserie","Fagutstilling","Muntlig presentasjon"];
+
+    // ---- UI-oppbygning ------------------------------------------------------------------------
+    const $ = (s, el=document) => el.querySelector(s);
+    const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+
+    function initFilters(){
+      const eSel = document.getElementById('epoch');
+      EPOCHS.forEach(e=>{const opt=document.createElement('option');opt.value=e;opt.textContent=e;eSel.appendChild(opt)});
+      const fSel = document.getElementById('format');
+      FORMATS.forEach(f=>{const opt=document.createElement('option');opt.value=f;opt.textContent=f;fSel.appendChild(opt)});
+      const tl = document.getElementById('timeline');
+      EPOCHS.forEach(e=>{const b=document.createElement('button');b.className='tick';b.textContent=e;b.onclick=()=>{epoch.value=(epoch.value===e?'':e);render()};tl.appendChild(b)});
+    }
+
+    function cardTemplate(w){
+      const tags = w.tags?.map(t=>`<span class="chip">#${t}</span>`).join('')||'';
+      const cover = w.cover?`style="background-image:url('${w.cover}')"`:'';
+      return `
+        <article class="card" data-epoch="${w.epoch}" data-format="${w.format}" data-tags="${(w.tags||[]).join(',')}">
+          <div class="thumb" ${cover} role="img" aria-label="Miniatyrbilde"></div>
+          <div class="body">
+            <h2 class="title">${w.title}</h2>
+            <div class="meta">
+              <span class="chip">${w.epoch}</span>
+              <span class="chip">${w.format}</span>
+              <span class="chip">© ${w.year}</span>
+              <span class="chip">${w.author}</span>
+            </div>
+            <p class="desc">${w.description||''}</p>
+            <div class="footer">
+              <a class="btn" href="${w.link}" target="_blank" rel="noopener noreferrer">Vis arbeid</a>
+              <div>${tags}</div>
+            </div>
+          </div>
+        </article>`
+    }
+
+    function render(){
+      const q = document.getElementById('q').value.trim().toLowerCase();
+      const e = document.getElementById('epoch').value;
+      const f = document.getElementById('format').value;
+      const activeTags = $$('.tag.active').map(b=>b.dataset.tag);
+
+      const result = WORKS.filter(w=>{
+        const matchesQ = !q || [w.title,w.description,w.author,w.epoch,(w.tags||[]).join(' ')].join(' ').toLowerCase().includes(q);
+        const matchesE = !e || w.epoch===e;
+        const matchesF = !f || w.format===f;
+        const matchesTags = activeTags.length===0 || activeTags.every(t=>w.tags?.includes(t));
+        return matchesQ && matchesE && matchesF && matchesTags;
+      });
+
+      const cards = result.map(cardTemplate).join('');
+      const cardsEl = document.getElementById('cards');
+      cardsEl.innerHTML = cards;
+      document.getElementById('empty').hidden = result.length !== 0;
+      document.getElementById('count').textContent = `${result.length} arbeid${result.length===1?'':'er'} vist`;
+
+      // Oppdater tidslinje-knapper
+      $$('#timeline .tick').forEach(t=>{
+        t.classList.toggle('active', t.textContent===e);
+      });
+    }
+
+    function bind(){
+      document.getElementById('q').addEventListener('input', render);
+      document.getElementById('epoch').addEventListener('change', render);
+      document.getElementById('format').addEventListener('change', render);
+      $$('.tag').forEach(b=>b.addEventListener('click', ()=>{b.classList.toggle('active');render()}));
+    }
+
+    // Init
+    initFilters();
+    bind();
+    render();
+  </script>
+</body>
 </html>
+
