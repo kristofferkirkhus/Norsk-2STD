@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VG2 Norsk • Elevutstilling</title>
+<meta name="description" content="Samling av elevarbeider i norsk: epoker, tekster og fordypning."/>
+<style>
+:root{
+--bg:#0b0f14; --panel:#111827; --muted:#9aa4b2; --text:#e5e7eb; --accent:#60a5fa; --chip:#1f2937; --card:#0f172a; --ok:#34d399; --warn:#fbbf24;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:linear-gradient(180deg,#0b0f14,#0b1220 30%,#0b0f14);color:var(--text);}
+header{position:sticky;top:0;background:rgba(11,15,20,.8);backdrop-filter:blur(10px);border-bottom:1px solid #111827;z-index:20}
+.wrap{max-width:1100px;margin:0 auto;padding:1rem}
+.row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+h1{font-size:clamp(1.3rem,1.3rem+1.2vw,2rem);margin:.2rem 0}
+.search{flex:1;display:flex;gap:.5rem}
+input,select{background:#0b1220;border:1px solid #1f2a3a;color:var(--text);border-radius:.6rem;padding:.7rem .9rem;width:100%}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1rem}
+.card{background:linear-gradient(180deg,#0c1322,#0b1018);border:1px solid #1f2937;border-radius:1rem;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.card .thumb{aspect-ratio:16/9;background:#0b0f14 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 112"><rect width="200" height="112" fill="%230b0f14"/><text x="50%" y="50%" fill="%239aa4b2" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle">Forhåndsvisning</text></svg>') center/contain no-repeat}
+.card .body{padding:1rem}
+.title{font-weight:700;line-height:1.2;margin:0 0 .3rem}
+.meta{display:flex;gap:.5rem;flex-wrap:wrap;margin:.4rem 0 .6rem}
+.chip{font-size:.75rem;padding:.25rem .5rem;border-radius:999px;background:var(--chip);border:1px solid #263244;color:#cbd5e1}
+.desc{color:var(--muted);font-size:.95rem;min-height:2.6em}
+.footer{display:flex;justify-content:space-between;align-items:center;margin-top:.8rem}
+.btn{appearance:none;border:1px solid #2b3a52;background:transparent;color:var(--accent);padding:.5rem .7rem;border-radius:.6rem;text-decoration:none;font-weight:600}
+.btn:hover{border-color:#3b82f6;background:rgba(96,165,250,.08)}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem}
+.tag{cursor:pointer}
+.tag.active{outline:2px solid var(--accent)}
+.legend{font-size:.85rem;color:var(--muted)}
+.empty{opacity:.8;text-align:center;padding:2rem}
+footer{border-top:1px solid #1f2937;margin-top:2rem}
+.timeline{display:flex;gap:.5rem;overflow:auto;padding:.5rem 0}
+.tick{white-space:nowrap;background:#0b1220;border:1px solid #1f2937;color:#cbd5e1;padding:.4rem .6rem;border-radius:.5rem;cursor:pointer}
+.tick.active{background:#15223a;color:#fff;border-color:#26416b}
+.note{background:#0b1220;border:1px dashed #2b3952;border-radius:.8rem;padding:1rem;margin-top:1rem}
+a.inline{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="row">
+<h1>VG2 Norsk • Elevutstilling</h1>
+<div class="search">
+<input id="q" placeholder="Søk i titler, beskrivelser, forfattere…" aria-label="Søk" />
+<select id="epoch">
+<option value="">Alle epoker</option>
+</select>
+<select id="format">
+<option value="">Alle formater</option>
+</select>
+</div>
+</div>
+<div class="filters">
+<span class="legend">Hurtigfiltre:</span>
+<button class="chip tag" data-tag="analyse">Analyse</button>
+<button class="chip tag" data-tag="kreativ">Kreativ</button>
+<button class="chip tag" data-tag="muntlig">Muntlig</button>
+<button class="chip tag" data-tag="fordypning">Fordypning</button>
+</html>
