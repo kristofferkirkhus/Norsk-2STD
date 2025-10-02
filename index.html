@@ -33,12 +33,13 @@ input,select{background:#0b1220;border:1px solid #1f2a3a;color:var(--text);borde
 .tag.active{outline:2px solid var(--accent)}
 .legend{font-size:.85rem;color:var(--muted)}
 .empty{opacity:.8;text-align:center;padding:2rem}
-footer{border-top:1px solid #1f2937;margin-top:2rem}
+footer{border-top:1px solid #1f2937;margin-top:2rem;padding:1rem 0}
 .timeline{display:flex;gap:.5rem;overflow:auto;padding:.5rem 0}
 .tick{white-space:nowrap;background:#0b1220;border:1px solid #1f2937;color:#cbd5e1;padding:.4rem .6rem;border-radius:.5rem;cursor:pointer}
 .tick.active{background:#15223a;color:#fff;border-color:#26416b}
 .note{background:#0b1220;border:1px dashed #2b3952;border-radius:.8rem;padding:1rem;margin-top:1rem}
 a.inline{color:var(--accent)}
+.footnote{font-size:.8rem;color:var(--muted);margin-top:.5rem;text-align:center}
 </style>
 </head>
 <body>
@@ -50,16 +51,4 @@ a.inline{color:var(--accent)}
 <input id="q" placeholder="Søk i titler, beskrivelser, forfattere…" aria-label="Søk" />
 <select id="epoch">
 <option value="">Alle epoker</option>
-</select>
-<select id="format">
-<option value="">Alle formater</option>
-</select>
-</div>
-</div>
-<div class="filters">
-<span class="legend">Hurtigfiltre:</span>
-<button class="chip tag" data-tag="analyse">Analyse</button>
-<button class="chip tag" data-tag="kreativ">Kreativ</button>
-<button class="chip tag" data-tag="muntlig">Muntlig</button>
-<button class="chip tag" data-tag="fordypning">Fordypning</button>
 </html>
